@@ -1,0 +1,69 @@
+/* Asegura que el contenedor principal ocupe toda la altura */
+.chat-layout {
+    display: flex;
+    flex-direction: column;
+    /* Apila la cabecera sobre el área de chat */
+    width: 100%;
+}
+
+/* Define la barra horizontal superior */
+.chat-header {
+    display: flex;
+    width: 100%;
+    height: 60px;
+    /* Altura fija para la barra superior */
+    background-color: #1a1a2e;
+    /* Un tono oscuro para el fondo */
+    padding: 0 16px;
+    /* Espaciado interno horizontal */
+    box-sizing: border-box;
+    align-items: center;
+    /* Centra los elementos verticalmente */
+    color: white;
+}
+
+/* Contenedor horizontal para el perfil */
+.user-profile {
+    display: flex;
+    align-items: center;
+    /* Alinea avatar y texto verticalmente */
+}
+
+/* Estilos para el contenedor del avatar */
+.avatar-container {
+    margin-right: 12px;
+    /* Espacio entre avatar y texto */
+    display: flex;
+    align-items: center;
+}
+
+/* Hace que el avatar sea circular */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    /* Asegura que la imagen no se deforme */
+    border: 2px solid #fff;
+    /* Opcional: un borde blanco */
+}
+
+/* Contenedor vertical para el nombre y estado */
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Nombre de usuario */
+.user-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Estado del usuario */
+.user-status {
+    font-size: 12px;
+    color: #b0b0b0;
+    /* Un gris claro para el estado */
+}
