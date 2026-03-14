@@ -1,0 +1,62 @@
+.chat-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.search-form {
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.search-input:focus {
+    border-color: #007bff;
+}
+
+.search-input.is-invalid {
+    border-color: #dc3545;
+}
+
+.error-messages {
+    color: #dc3545;
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.btn-add-chat {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 16px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btn-add-chat:hover {
+    background-color: #0056b3;
+}

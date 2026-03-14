@@ -1,0 +1,28 @@
+<div class="chat-header-container">
+
+    <form [formGroup]="searchForm" class="search-form">
+        <div class="input-group">
+            <input type="text" formControlName="searchQuery" placeholder="Buscar chats..." class="search-input"
+                [class.is-invalid]="searchQuery?.invalid && (searchQuery?.dirty || searchQuery?.touched)">
+
+            @if (searchQuery?.invalid && (searchQuery?.dirty || searchQuery?.touched)) {
+            <div class="error-messages">
+                @if (searchQuery?.hasError('minlength')) {
+                <span>Ingresa al menos 2 caracteres.</span>
+                }
+                @if (searchQuery?.hasError('maxlength')) {
+                <span>Máximo 50 caracteres permitidos.</span>
+                }
+                @if (searchQuery?.hasError('pattern')) {
+                <span>No se permiten caracteres especiales.</span>
+                }
+            </div>
+            }
+        </div>
+    </form>
+
+    <a routerLink="/agregar-chat" class="btn-add-chat">
+        + Agregar nuevo chat
+    </a>
+
+</div>
