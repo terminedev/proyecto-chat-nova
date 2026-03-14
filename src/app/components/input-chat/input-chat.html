@@ -1,0 +1,39 @@
+<div class="chat-container">
+
+    <div class="input-section">
+        <input type="text" [formControl]="messageControl" placeholder="Escribe tu mensaje aquí..."
+            (keyup.enter)="onSend()" />
+
+        @if (messageControl.value) {
+        <button type="button" class="btn-clear" (click)="clearMessage()" title="Borrar mensaje">
+            ✖
+        </button>
+        }
+    </div>
+
+    <div class="actions-section">
+
+        <div class="suggestions-wrapper">
+            <button type="button" class="btn-secondary" (click)="toggleSuggestions()">
+                Mensajes sugeridos 💡
+            </button>
+
+            @if (showSuggestions) {
+            <div class="suggestions-menu">
+                <ul>
+                    @for (msg of suggestedMessages; track msg) {
+                    <li (click)="selectSuggestion(msg)">
+                        {{ msg }}
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+
+        <button type="button" class="btn-primary" [disabled]="messageControl.invalid" (click)="onSend()">
+            Enviar 🚀
+        </button>
+    </div>
+
+</div>
