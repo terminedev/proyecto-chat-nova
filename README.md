@@ -1,59 +1,78 @@
-# NovaChatProyect
+### 1. Arquitectura Base y Angular 17
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+[] **Standalone Components:** Construir toda la aplicación utilizando componentes independientes.
 
-## Development server
+[] **Control Flow Blocks:** Usar las nuevas directivas `@if` y `@for` en tus archivos HTML para renderizar las listas y estados. 
 
-To start a local development server, run:
+[] **Interfaces:** Definir modelos de datos claros para `Mensaje` y `Chat`. *Tip para tu idea: a la interface `Chat` le puedes agregar una propiedad opcional `esGrupo: boolean` o un array de `participantes`.*
 
-```bash
-ng serve
-```
+[] **Servicios:** Crear una carpeta `services` que contenga tu `ChatService` para manejar toda la lógica y el estado de los mensajes.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 2. Panel Lateral Izquierdo (Lista de Personajes/Grupos)
 
-```bash
-ng generate component component-name
-```
+[] **Lista de contactos:** Mostrar a tus personajes y grupos con su avatar, nombre y estado (ej. online/offline/última vez visto en el reino).
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+[] **Creación dinámica:** Implementar un formulario reactivo para que el usuario pueda crear nuevos chats o grupos.
 
-```bash
-ng generate --help
-```
 
-## Building
 
-To build the project run:
+### 3. Panel Principal Derecho (La Conversación)
 
-```bash
-ng build
-```
+[] **Historial independiente:** Mostrar los mensajes correspondientes solo al chat o grupo que esté seleccionado.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+[] **Formulario Reactivo:** Usar `FormControl` con validaciones para el input donde el usuario escribe.
 
-## Running unit tests
+[] **Tu Opción 2 (Chips de sugerencias):** Arriba del input, colocar botones con posibles diálogos. Al hacer clic en uno, este debe rellenar el valor del `FormControl`, pero *el usuario debe presionar enviar manualmente* para pasar la validación.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+[] **Diferenciación visual:** Alinear los mensajes de tu usuario a la derecha y los de tus personajes (la app) a la izquierda.
 
-```bash
-ng test
-```
+[] **Retardo y Autorespuesta:** Al enviar un mensaje, este debe aparecer en pantalla inmediatamente. Luego, aplicar un retardo (con `setTimeout` o RxJS) y hacer que el personaje o el grupo responda automáticamente en base a las palabras clave detectadas.
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+### 4. Routing (Rutas de la App)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+[] **Configuración:** Utilizar `provideRouter` para manejar la navegación.
 
-## Additional Resources
+[] **Ruta `/chats`:** Debe mostrar la vista principal con la lista de chats.
+ 
+[] **Ruta `/chats/:id`:** Debe abrir la conversación específica con un personaje o grupo.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+[] **Ruta `/nuevo`:** Debe llevar al formulario de creación de chat.
+
+
+
+### 5. Estilos y Maquetación (CSS)
+
+[] **CSS Nativo:** Estilar usando archivos `.css` puros, aplicando Flexbox o Grid para la estructura.
+
+[] **Burbujas:** Diseñar burbujas diferenciadas para los mensajes enviados y recibidos.
+
+[] **Responsive Design:** * En pantallas grandes: Mostrar los dos paneles (lista y conversación) lado a lado.
+
+[] * En móviles: Mostrar solo un panel a la vez (o ves la lista de personajes, o ves la conversación activa).
+
+
+
+### 6. Entregables Obligatorios
+
+[] **Documentación (README):** Incluir instrucciones claras de instalación y ejecución (`npm install`, `ng serve`), y explicar brevemente la estructura de tu proyecto y cómo probar las rutas.
+ 
+[] **Control de versiones:** Realizar *commits* progresivos a lo largo del desarrollo para que los profesores vean tu evolución.
+
+
+[] **Deploy:** Publicar la aplicación en Vercel o Netlify, configurando la redirección necesaria para una Single Page Application (SPA).
+
+
+
+### 7. Extras (Bonus track para lucirte)
+
+[] * Implementar un buscador de chats en la barra lateral.
+
+[] * Agregar animaciones (con CSS o Angular Animations) para que los mensajes aparezcan con un efecto *fade in*.
+
+[] * Crear un *Pipe* personalizado (quizás para formatear las fechas con un estilo propio de la época de tus personajes).
+
+[] * Usar *Signals* para manejar el estado global de tu `ChatService` en lugar de `BehaviorSubject`.
