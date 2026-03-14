@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   templateUrl: './layout-chat.html',
   styleUrl: './layout-chat.css',
+  standalone: true,
 })
 export class LayoutChat {
 

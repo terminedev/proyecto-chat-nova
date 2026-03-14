@@ -1,10 +1,8 @@
 ### 1. Arquitectura Base y Angular 17
 
-[] **Standalone Components:** Construir toda la aplicación utilizando componentes independientes.
+[✓] **Standalone Components:** Construir toda la aplicación utilizando componentes independientes.
 
-[] **Control Flow Blocks:** Usar las nuevas directivas `@if` y `@for` en tus archivos HTML para renderizar las listas y estados. 
-
-[] **Interfaces:** Definir modelos de datos claros para `Mensaje` y `Chat`. *Tip para tu idea: a la interface `Chat` le puedes agregar una propiedad opcional `esGrupo: boolean` o un array de `participantes`.*
+[✓] **Control Flow Blocks:** Usar las nuevas directivas `@if` y `@for` en tus archivos HTML para renderizar las listas y estados. 
 
 [] **Servicios:** Crear una carpeta `services` que contenga tu `ChatService` para manejar toda la lógica y el estado de los mensajes.
 
