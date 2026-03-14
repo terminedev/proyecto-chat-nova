@@ -29,7 +29,6 @@
 [] **Retardo y Autorespuesta:** Al enviar un mensaje, este debe aparecer en pantalla inmediatamente. Luego, aplicar un retardo (con `setTimeout` o RxJS) y hacer que el personaje o el grupo responda automáticamente en base a las palabras clave detectadas.
 
 
-
 ### 4. Routing (Rutas de la App)
 
 [] **Configuración:** Utilizar `provideRouter` para manejar la navegación.

@@ -9,7 +9,7 @@ export class ContactService {
 
   private readonly STORAGE_KEY = 'contactsInLocalStorage';
 
-  constructor() { }
+  constructor() { };
 
   // Obtener todos los contactos:
   getContacts(): Contact[] {
