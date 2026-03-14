@@ -2,7 +2,7 @@
 
     <form [formGroup]="searchForm" class="search-form">
         <div class="input-group">
-            <input type="text" formControlName="searchQuery" placeholder="Buscar chats..." class="search-input"
+            <input type="search" formControlName="searchQuery" placeholder="Buscar chats..." class="search-input"
                 [class.is-invalid]="searchQuery?.invalid && (searchQuery?.dirty || searchQuery?.touched)">
 
             @if (searchQuery?.invalid && (searchQuery?.dirty || searchQuery?.touched)) {
@@ -18,9 +18,7 @@
         </div>
     </form>
 
-    <a routerLink="/agregar-chat" class="btn-add-chat">
-        + Agregar nuevo chat
-    </a>
+    <button>+ Agregar nuevo chat</button>
 
     <app-list-chat [contacts]="contacts" />
 </div>
