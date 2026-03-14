@@ -25,7 +25,7 @@ export class ContactService {
 
     } catch (error) {
 
-      console.error("Error al parsear los contactos del localStorage:", error);
+      console.error("Error al obtener todos los contactos del localStorage:", error);
       return [];
 
     }
@@ -71,8 +71,10 @@ export class ContactService {
         online: true,
         //Los nuevos contactos siempre estarán en linea
         lastConnection: '',
-        currentLocation: 'Academia Mágica',
-        idChat: crypto.randomUUID()
+        location: 'Academia Mágica',
+        idChat: crypto.randomUUID(),
+        //Sólo los contactos creados pueden eliminarse
+        canBeDeleted: true
       };
 
       contacts.push(newContact);
@@ -81,9 +83,59 @@ export class ContactService {
 
     } catch (error) {
 
-      console.error('Error al leer o parsear los contactos del localStorage:', error);
+      console.error('Error al añadir un nuevo contacto del localStorage:', error);
       return false;
     }
   };
+
+  // Obtener o incluir contactos por defecto:
+  initDefaultContacts(): void {
+    const storedData = localStorage.getItem(this.STORAGE_KEY);
+
+    try {
+      if (!storedData || JSON.parse(storedData).length === 0) {
+
+        const defaultContacts: Contact[] = [
+          {
+            id: '12sdvDSAF3',
+            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            name: 'Iko Ukonwada',
+            phone: '11345678898',
+            online: true,
+            lastConnection: '',
+            location: 'Palacio Real',
+            idChat: '1298sd23SAF3',
+            canBeDeleted: false,
+          },
+          {
+            id: '67dfKMK4mD',
+            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            name: 'Soraya Darkworth',
+            phone: '1199843450',
+            online: false,
+            lastConnection: 'Ayer',
+            location: 'Desconocido',
+            idChat: '9880dfvFF',
+            canBeDeleted: false,
+          },
+          {
+            id: '0887ascGDG',
+            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            name: 'Gema',
+            phone: '566434553',
+            online: false,
+            lastConnection: 'Hace 45 minutos',
+            location: 'Ménima\'s Gym',
+            idChat: '9887hjjMMG',
+            canBeDeleted: false,
+          },
+        ];
+
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(defaultContacts));
+      }
+    } catch (error) {
+      console.error('Error al leer y establecer la carga inicial:', error);
+    }
+  }
 
 }

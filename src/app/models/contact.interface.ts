@@ -5,8 +5,9 @@ export interface Contact {
     phone: string,
     online: boolean,
     lastConnection: string,
-    currentLocation: Locations,
-    idChat: string
+    location: Locations,
+    idChat: string,
+    canBeDeleted: boolean,
 }
 
 export interface ContactInputs {

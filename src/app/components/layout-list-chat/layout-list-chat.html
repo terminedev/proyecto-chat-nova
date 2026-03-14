@@ -7,9 +7,6 @@
 
             @if (searchQuery?.invalid && (searchQuery?.dirty || searchQuery?.touched)) {
             <div class="error-messages">
-                @if (searchQuery?.hasError('minlength')) {
-                <span>Ingresa al menos 2 caracteres.</span>
-                }
                 @if (searchQuery?.hasError('maxlength')) {
                 <span>Máximo 50 caracteres permitidos.</span>
                 }
@@ -25,4 +22,5 @@
         + Agregar nuevo chat
     </a>
 
+    <app-list-chat [contacts]="contacts" />
 </div>
