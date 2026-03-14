@@ -1,0 +1,48 @@
+<div class="form-container">
+    <h3>Agregar Nuevo Chat</h3>
+
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="name">Nombre del contacto</label>
+            <input type="text" id="name" formControlName="name" placeholder="Ej. Juan Pérez"
+                [class.is-invalid]="nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)">
+
+            @if (nameControl?.invalid && (nameControl?.dirty || nameControl?.touched)) {
+            <div class="error-container">
+                @if (nameControl?.hasError('required')) {
+                <small class="error-text">El nombre es obligatorio.</small>
+                }
+                @if (nameControl?.hasError('minlength')) {
+                <small class="error-text">El nombre debe tener al menos 2 caracteres.</small>
+                }
+            </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Número de contacto</label>
+            <input type="tel" id="phone" formControlName="phone" placeholder="Ej. 1123456789"
+                [class.is-invalid]="phoneControl?.invalid && (phoneControl?.dirty || phoneControl?.touched)">
+
+            @if (phoneControl?.invalid && (phoneControl?.dirty || phoneControl?.touched)) {
+            <div class="error-container">
+                @if (phoneControl?.hasError('required')) {
+                <small class="error-text">El número de contacto es obligatorio.</small>
+                }
+                @if (phoneControl?.hasError('pattern')) {
+                <small class="error-text">El número solo debe contener dígitos (sin espacios ni guiones).</small>
+                }
+                @if (phoneControl?.hasError('minlength')) {
+                <small class="error-text">El número debe tener al menos 8 dígitos.</small>
+                }
+            </div>
+            }
+        </div>
+
+        <button type="submit" [disabled]="chatForm.invalid" class="submit-btn">
+            Agregar Contacto
+        </button>
+
+    </form>
+</div>

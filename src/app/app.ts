@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { ListChat } from "./components/list-chat/list-chat";
+import { AddNewChatFormComponent } from "./components/add-new-chat-form/add-new-chat-form";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ListChat],
+  imports: [AddNewChatFormComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
