@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Chat, Message } from '../models/chat.interface';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,6 +8,9 @@ import { Chat, Message } from '../models/chat.interface';
 export class ChatService {
 
   private readonly STORAGE_KEY = 'chatsInLocalStorage';
+
+  private chatUpdatedSource = new Subject<string>();
+  chatUpdated$ = this.chatUpdatedSource.asObservable();
 
   constructor() { };
 
@@ -36,27 +40,24 @@ export class ChatService {
   addNewMessage(newMessage: Message, chatId: string): boolean {
     try {
       const storedChats = localStorage.getItem(this.STORAGE_KEY);
-
       if (!storedChats) return false;
 
       const chats: Chat[] = JSON.parse(storedChats);
-
       const chatIndex = chats.findIndex(chat => chat.id === chatId);
 
       if (chatIndex === -1) return false;
 
       chats[chatIndex].messages.push(newMessage);
-
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(chats));
 
-      return true;
+      this.chatUpdatedSource.next(chatId);
 
+      return true;
     } catch (error) {
       console.error("Error al añadir el mensaje al localStorage:", error);
       return false;
-
     }
-  };
+  }
 
   // Incluir chats por defecto:
   initDefaultChats(): void {

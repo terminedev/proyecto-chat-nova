@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./input-chat.css']
 })
 export class InputChat {
+  @Output() sendMessage = new EventEmitter<string>();
   messageControl = new FormControl('', [Validators.required, Validators.minLength(1)]);
 
   showSuggestions = false;
@@ -31,7 +32,8 @@ export class InputChat {
   }
 
   onSend() {
-    if (this.messageControl.valid) {
+    if (this.messageControl.valid && this.messageControl.value) {
+      this.sendMessage.emit(this.messageControl.value);
       this.messageControl.reset('');
     }
   }

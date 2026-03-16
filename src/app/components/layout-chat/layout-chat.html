@@ -1,6 +1,5 @@
 <div class="chat-layout">
     <aside class="chat-sidebar">
-
         @if (contact) {
         <header class="user-profile">
             <div class="avatar-container">
@@ -28,5 +27,7 @@
 
     @if (contact) {
     <app-chat-view [contactId]="contact.id" />
+
+    <app-input-chat (sendMessage)="onNewMessage($event)" />
     }
 </div>
