@@ -1,31 +1,23 @@
 <div class="chat-container">
+    @if (chat && chat.messages.length > 0) {
+    @for (msg of chat.messages; track msg.date) {
 
-    <div class="message-wrapper receiver">
+    <div class="message-wrapper" [class.sender]="msg.author === 'Me'" [class.receiver]="msg.author !== 'Me'">
         <div class="message-bubble">
-            <p class="text">¡Hola! ¿Cómo venimos con la integración del nuevo diseño?</p>
-            <span class="metadata">14/03/2026 - 10:30 AM</span>
+            <p class="text">{{ msg.messageText }}</p>
+
+            @if (msg.messageImg) {
+            <img [src]="msg.messageImg" alt="Imagen adjunta" class="message-image">
+            }
+
+            <span class="metadata">{{ msg.date | date:'dd/MM/yyyy - hh:mm a' }}</span>
         </div>
     </div>
 
-    <div class="message-wrapper sender">
-        <div class="message-bubble">
-            <p class="text">¡Hola! Todo excelente. Ya terminé de ajustar la vista de chat, justamente.</p>
-            <span class="metadata">14/03/2026 - 10:32 AM</span>
-        </div>
+    }
+    } @else {
+    <div class="empty-chat">
+        <p>No hay mensajes todavía. ¡Envía el primero!</p>
     </div>
-
-    <div class="message-wrapper receiver">
-        <div class="message-bubble">
-            <p class="text">¡Qué buena noticia! ¿Podrías subir los cambios para probarlos en mi entorno?</p>
-            <span class="metadata">14/03/2026 - 10:33 AM</span>
-        </div>
-    </div>
-
-    <div class="message-wrapper sender">
-        <div class="message-bubble">
-            <p class="text">Claro, ahora mismo hago el push al repositorio. Dame un par de minutos.</p>
-            <span class="metadata">14/03/2026 - 10:35 AM</span>
-        </div>
-    </div>
-
+    }
 </div>

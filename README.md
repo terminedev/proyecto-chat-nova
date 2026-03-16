@@ -10,9 +10,9 @@
 
 ### 2. Panel Lateral Izquierdo (Lista de Personajes/Grupos)
 
-[] **Lista de contactos:** Mostrar a tus personajes y grupos con su avatar, nombre y estado (ej. online/offline/última vez visto en el reino).
+[✓] **Lista de contactos:** Mostrar a tus personajes y grupos con su avatar, nombre y estado (ej. online/offline/última vez visto en el reino).
 
-[] **Creación dinámica:** Implementar un formulario reactivo para que el usuario pueda crear nuevos chats o grupos.
+[✓] **Creación dinámica:** Implementar un formulario reactivo para que el usuario pueda crear nuevos chats o grupos.
 
 
 

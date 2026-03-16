@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { LayoutListChat } from "./components/layout-list-chat/layout-list-chat";
-import { AddNewChatFormComponent } from "./components/add-new-chat-form/add-new-chat-form";
+import { LayoutChat } from "./components/layout-chat/layout-chat";
 
 @Component({
   selector: 'app-root',
-  imports: [LayoutListChat, AddNewChatFormComponent],
+  imports: [LayoutChat],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

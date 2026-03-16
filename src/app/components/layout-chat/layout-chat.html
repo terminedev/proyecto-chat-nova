@@ -1,18 +1,32 @@
 <div class="chat-layout">
     <aside class="chat-sidebar">
 
+        @if (contact) {
         <header class="user-profile">
             <div class="avatar-container">
-                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=Arthur" alt="Avatar del usuario"
-                    class="avatar">
+                <img [src]="contact.avatarUrl" [alt]="'Avatar de ' + contact.name" class="avatar">
             </div>
 
             <div class="user-info">
-                <h2 class="user-name">Sir Arthur</h2>
+                <h2 class="user-name">{{ contact.name }}</h2>
+
                 <span class="user-status">
-                    Última vez visto en el reino hace 2h
+                    @if (contact.online) {
+                    Ubicación actual: {{ contact.location }} | En línea
+                    } @else {
+                    Última ubicación: {{ contact.location }} | {{ contact.lastConnection }}
+                    }
                 </span>
             </div>
         </header>
+        } @else {
+        <div class="loading-state">
+            <p>Cargando perfil...</p>
+        </div>
+        }
     </aside>
+
+    @if (contact) {
+    <app-chat-view [contactId]="contact.id" />
+    }
 </div>

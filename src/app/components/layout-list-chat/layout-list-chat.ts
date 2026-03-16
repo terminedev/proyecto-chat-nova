@@ -5,6 +5,7 @@ import { distinctUntilChanged } from 'rxjs';
 import { ListChat } from "../list-chat/list-chat";
 import { ContactService } from '../../services/contact-service';
 import { Contact } from '../../models/contact.interface';
+import { ChatService } from '../../services/chat-service';
 
 @Component({
   selector: 'app-layout-listchat',
@@ -20,7 +21,8 @@ export class LayoutListChat implements OnInit {
   constructor(
     private fb: FormBuilder,
     private destroyRef: DestroyRef,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private chatService: ChatService
   ) {
     this.searchForm = this.fb.group({
       searchQuery: ['', [
@@ -32,6 +34,7 @@ export class LayoutListChat implements OnInit {
 
   ngOnInit(): void {
     this.contactService.initDefaultContacts();
+    this.chatService.initDefaultChats();
     this.contacts = this.contactService.getContacts();
 
     this.searchForm.get('searchQuery')?.valueChanges

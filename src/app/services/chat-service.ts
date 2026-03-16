@@ -11,15 +11,18 @@ export class ChatService {
   constructor() { };
 
   // Obtener chat:
-  getChat(id: string): Chat | null {
+  getChat(contactId: string): Chat | null {
     try {
       const rawChats = localStorage.getItem(this.STORAGE_KEY);
 
       if (!rawChats) return null;
 
       const chats: Chat[] = JSON.parse(rawChats);
+      console.log(chats)
+      console.log(contactId)
+      return chats.find(chat => chat.id === contactId) ?? null;
 
-      return chats.find(chat => chat.id === id) ?? null;
+
 
     } catch (error) {
 
@@ -55,5 +58,66 @@ export class ChatService {
     }
   };
 
+  // Incluir chats por defecto:
+  initDefaultChats(): void {
+    const storedData = localStorage.getItem(this.STORAGE_KEY);
+
+    try {
+      if (!storedData || JSON.parse(storedData).length === 0) {
+
+        const defaultChats: Chat[] = [
+          {
+            id: '12sdvDSAF3',
+            messages: [
+              {
+                author: 'Iko Ukonwada',
+                date: new Date().toISOString(),
+                messageText: '¡Hola! Te escribo desde el Palacio Real. ¿Cómo va todo?',
+                messageImg: null,
+              },
+              {
+                author: 'Me',
+                date: new Date().toISOString(),
+                messageText: '¡Todo excelente por aquí, Iko!',
+                messageImg: null,
+              }
+            ]
+          },
+          {
+            id: '67dfKMK4mD',
+            messages: [
+              {
+                author: 'Soraya Darkworth',
+                date: '2023-10-20T14:30:00.000Z',
+                messageText: 'Tengo información confidencial. No le digas a nadie.',
+                messageImg: null,
+              }
+            ]
+          },
+          {
+            id: '0887ascGDG',
+            messages: [
+              {
+                author: 'Gema',
+                date: '2023-10-26T09:15:00.000Z',
+                messageText: 'Terminé mi rutina de hoy, mira cómo quedó el equipo nuevo:',
+                messageImg: 'https://picsum.photos/seed/gym/400/300',
+              },
+              {
+                author: 'Me',
+                date: '2023-10-26T09:20:00.000Z',
+                messageText: '¡Se ve genial! Nos vemos más tarde.',
+                messageImg: null,
+              }
+            ]
+          },
+        ];
+
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(defaultChats));
+      }
+    } catch (error) {
+      console.error('Error al leer y establecer la carga inicial de los chats:', error);
+    }
+  }
 
 }
