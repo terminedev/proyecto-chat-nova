@@ -20,5 +20,6 @@
 
     <a routerLink="/agregar-contacto">+ Agregar nuevo contacto</a>
 
-    <app-list-chat [contacts]="contacts" />
+    <app-list-chat [contacts]="contacts" (delete)="onDeleteContact($event)">
+    </app-list-chat>
 </div>

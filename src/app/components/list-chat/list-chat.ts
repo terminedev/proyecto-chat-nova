@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Contact } from '../../models/contact.interface';
 
@@ -12,6 +12,13 @@ import { Contact } from '../../models/contact.interface';
 export class ListChat {
 
   @Input({ required: true }) contacts: Contact[] = [];
+  @Output() delete = new EventEmitter<string>();
 
   constructor() { };
+
+  onDelete(event: Event, id: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.delete.emit(id);
+  }
 }

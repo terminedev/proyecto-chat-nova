@@ -46,12 +46,26 @@ export class LayoutListChat implements OnInit {
       });
   }
 
+  get searchQuery() {
+    return this.searchForm.get('searchQuery');
+  }
+
   // Realizar busqueda
   performSearch(query: string) {
     this.contacts = this.contactService.searchContact(query);
   }
 
-  get searchQuery() {
-    return this.searchForm.get('searchQuery');
+  // Eliminar contacto
+  onDeleteContact(id: string) {
+    const success = this.contactService.deleteContact(id);
+
+    if (success) {
+      const currentQuery = this.searchForm.get('searchQuery')?.value;
+      if (currentQuery) {
+        this.performSearch(currentQuery);
+      } else {
+        this.contacts = this.contactService.getContacts();
+      }
+    }
   }
 }

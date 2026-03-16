@@ -93,7 +93,7 @@ export class ContactService {
     }
   };
 
-  // Obtener o incluir contactos por defecto:
+  // Incluir contactos por defecto:
   initDefaultContacts(): void {
     const storedData = localStorage.getItem(this.STORAGE_KEY);
 
@@ -140,6 +140,29 @@ export class ContactService {
       }
     } catch (error) {
       console.error('Error al leer y establecer la carga inicial:', error);
+    }
+  }
+
+  // Eliminar contacto:
+  deleteContact(id: string): boolean {
+    try {
+      const storedData = localStorage.getItem(this.STORAGE_KEY);
+      if (!storedData) return false;
+
+      let contacts: Contact[] = JSON.parse(storedData);
+      const initialLength = contacts.length;
+
+      contacts = contacts.filter(contact => !(contact.id === id && contact.canBeDeleted));
+
+      if (contacts.length !== initialLength) {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(contacts));
+        return true;
+      }
+      return false;
+
+    } catch (error) {
+      console.error('Error al eliminar un contacto del localStorage:', error);
+      return false;
     }
   }
 
