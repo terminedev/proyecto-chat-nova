@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+// 1. Importamos ChangeDetectorRef
+import { Component, Input, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatService } from '../../services/chat-service';
 import { Chat } from '../../models/chat.interface';
@@ -11,14 +12,18 @@ import { Subscription } from 'rxjs';
   styleUrl: './chat-view.css',
   standalone: true,
 })
-export class ChatView implements OnInit {
+export class ChatView implements OnInit, OnDestroy {
 
   @Input({ required: true }) contactId!: string;
+  @Input() isTyping: boolean = false;
 
   chat: Chat | null = null;
   private subscription!: Subscription;
 
-  constructor(private chatService: ChatService) { }
+  constructor(
+    private chatService: ChatService,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   ngOnInit(): void {
     this.loadChat();
@@ -26,12 +31,15 @@ export class ChatView implements OnInit {
     this.subscription = this.chatService.chatUpdated$.subscribe((updatedChatId) => {
       if (updatedChatId === this.contactId) {
         this.loadChat();
+
+        this.cdr.detectChanges();
       }
     });
   }
 
   private loadChat(): void {
     this.chat = this.chatService.getChat(this.contactId);
+
     if (!this.chat) {
       console.warn("No se encontraron mensajes para este contacto.");
     }

@@ -20,4 +20,12 @@
         <p>No hay mensajes todavía. ¡Envía el primero!</p>
     </div>
     }
+
+    @if (isTyping) {
+    <div class="message-wrapper receiver">
+        <div class="message-bubble typing-indicator">
+            <span class="dot">...</span>
+        </div>
+    </div>
+    }
 </div>

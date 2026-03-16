@@ -26,7 +26,7 @@
     </aside>
 
     @if (contact) {
-    <app-chat-view [contactId]="contact.id" />
+    <app-chat-view [contactId]="contact.id" [isTyping]="isTyping" />
 
     <app-input-chat (sendMessage)="onNewMessage($event)" />
     }

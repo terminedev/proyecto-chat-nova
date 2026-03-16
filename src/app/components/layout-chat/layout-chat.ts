@@ -4,7 +4,7 @@ import { ContactService } from '../../services/contact-service';
 import { ChatView } from "../chat-view/chat-view";
 import { ChatService } from '../../services/chat-service';
 import { InputChat } from "../input-chat/input-chat";
-import { Message } from '../../models/chat.interface'; // <-- Asegúrate de importar Message
+import { Message } from '../../models/chat.interface';
 
 @Component({
   selector: 'app-layout-chat',
@@ -15,6 +15,23 @@ import { Message } from '../../models/chat.interface'; // <-- Asegúrate de impo
 })
 export class LayoutChat implements OnInit {
   contact: Contact | undefined;
+  isTyping: boolean = false;
+
+  // Diccionario con 5 respuestas aleatorias por ID de contacto
+  private randomRepliesMap: { [key: string]: string[] } = {
+    '12sdvDSAF3': [ // Iko Ukonwada
+      '¡Qué interesante!',
+      '¿En serio? Cuéntame más.',
+      'Jaja, me parece genial.',
+      'Déjame revisarlo y te digo.',
+      '¡Exacto! Así mismo es.'
+    ]
+  };
+
+  // Respuestas por defecto por si agregas un contacto nuevo y no está en el diccionario
+  private defaultReplies: string[] = [
+    '¡Hola!', 'Vale, entiendo.', 'Claro que sí.', 'Me parece perfecto.', 'Hablamos luego.'
+  ];
 
   constructor(
     private contactService: ContactService,
@@ -33,24 +50,46 @@ export class LayoutChat implements OnInit {
     }
   }
 
-  // --- NUEVO MÉTODO ---
   onNewMessage(text: string): void {
-    // Verificamos por seguridad que el contacto exista antes de enviar
     if (!this.contact) return;
 
-    // 1. Armamos el objeto con la estructura de tu interfaz Message
-    const newMessage: Message = {
+    const userMessage: Message = {
       author: 'Me',
       date: new Date().toISOString(),
       messageText: text,
       messageImg: null,
     };
 
-    // 2. Guardamos el mensaje en el servicio pasándole el ID del contacto actual
-    const success = this.chatService.addNewMessage(newMessage, this.contact.id);
+    const success = this.chatService.addNewMessage(userMessage, this.contact.id);
 
-    if (!success) {
+    if (success) {
+      this.triggerBotReply(this.contact);
+    } else {
       console.error("Hubo un error al guardar el mensaje.");
     }
+  }
+
+  private triggerBotReply(contact: Contact): void {
+    const replies = this.randomRepliesMap[contact.id] || this.defaultReplies;
+
+    const randomIndex = Math.floor(Math.random() * replies.length);
+    const randomText = replies[randomIndex];
+
+    const delay = Math.floor(Math.random() * 500) + 1500;
+    this.isTyping = true;
+
+    setTimeout(() => {
+      const replyMessage: Message = {
+        author: contact.name,
+        date: new Date().toISOString(),
+        messageText: randomText,
+        messageImg: null,
+      };
+
+      this.isTyping = false;
+
+      this.chatService.addNewMessage(replyMessage, contact.id);
+
+    }, delay);
   }
 }
