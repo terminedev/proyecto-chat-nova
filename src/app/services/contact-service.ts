@@ -62,6 +62,11 @@ export class ContactService {
       const storedData = localStorage.getItem(this.STORAGE_KEY);
       const contacts: Contact[] = storedData ? JSON.parse(storedData) : [];
 
+      if (contacts.length >= 7) {
+        console.warn('Has alcanzado el límite máximo de contactos.');
+        return false;
+      };
+
       const newContact: Contact = {
         id: crypto.randomUUID(),
         //Incluir avatar img por defecto
@@ -78,7 +83,7 @@ export class ContactService {
       };
 
       contacts.push(newContact);
-      localStorage.setItem('contactsInLocalStorage', JSON.stringify(contacts));
+      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(contacts));
       return true;
 
     } catch (error) {
