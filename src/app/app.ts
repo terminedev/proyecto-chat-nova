@@ -1,9 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { LayoutChat } from "./components/layout-chat/layout-chat";
+import { RouterOutlet } from "@angular/router";
 
 @Component({
   selector: 'app-root',
-  imports: [LayoutChat],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

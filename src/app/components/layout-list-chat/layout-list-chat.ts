@@ -6,12 +6,12 @@ import { ListChat } from "../list-chat/list-chat";
 import { ContactService } from '../../services/contact-service';
 import { Contact } from '../../models/contact.interface';
 import { ChatService } from '../../services/chat-service';
-import { InputChat } from "../input-chat/input-chat";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-layout-listchat',
   standalone: true,
-  imports: [ReactiveFormsModule, ListChat],
+  imports: [ReactiveFormsModule, ListChat, RouterLink],
   templateUrl: './layout-list-chat.html',
   styleUrl: './layout-list-chat.css'
 })

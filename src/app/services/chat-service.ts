@@ -40,21 +40,29 @@ export class ChatService {
   addNewMessage(newMessage: Message, chatId: string): boolean {
     try {
       const storedChats = localStorage.getItem(this.STORAGE_KEY);
-      if (!storedChats) return false;
+      // Si no hay nada, inicializamos con un array vacío
+      let chats: Chat[] = storedChats ? JSON.parse(storedChats) : [];
 
-      const chats: Chat[] = JSON.parse(storedChats);
-      const chatIndex = chats.findIndex(chat => chat.id === chatId);
+      let chatIndex = chats.findIndex(chat => chat.id === chatId);
 
-      if (chatIndex === -1) return false;
+      if (chatIndex === -1) {
+        // SI NO EXISTE EL CHAT, LO CREAMOS
+        const newChat: Chat = {
+          id: chatId,
+          messages: []
+        };
+        chats.push(newChat);
+        chatIndex = chats.length - 1;
+      }
 
+      // Ahora sí, insertamos el mensaje
       chats[chatIndex].messages.push(newMessage);
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(chats));
 
       this.chatUpdatedSource.next(chatId);
-
       return true;
     } catch (error) {
-      console.error("Error al añadir el mensaje al localStorage:", error);
+      console.error("Error al añadir el mensaje:", error);
       return false;
     }
   }

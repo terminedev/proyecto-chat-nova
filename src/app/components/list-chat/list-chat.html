@@ -1,7 +1,7 @@
 <div class="chat-list">
 
     @for (contact of contacts; track contact.id) {
-    <a class="chat-item" [routerLink]="['/chat', contact.idChat]">
+    <a class="chat-item" [routerLink]="['/chat', contact.id]">
         <img class="avatar" [src]="contact.avatarUrl" alt="Avatar">
 
         <div class="chat-info">
