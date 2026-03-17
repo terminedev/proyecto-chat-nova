@@ -1,6 +1,6 @@
 <div class="chat-container">
     @if (chat && chat.messages.length > 0) {
-    @for (msg of chat.messages; track msg.date) {
+    @for (msg of chat.messages; track $index ) {
 
     <div class="message-wrapper" [class.sender]="msg.author === 'Me'" [class.receiver]="msg.author !== 'Me'">
         <div class="message-bubble">
