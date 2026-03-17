@@ -1,62 +1,91 @@
+/* Asumiendo que esta es la clase de tu div principal o puedes usar :host */
 .chat-header-container {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 16px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+    flex-direction: column;
+    max-width: 320px;
+    height: 100vh;
+    /* IMPORTANTE: Necesita un alto fijo para que el scroll hijo funcione */
+    background-color: #0f172a;
+    /* Fondo oscuro base */
+    border-right: 1px solid #334155;
+    /* Borde adaptado al modo oscuro */
+    /* Estilo clásico de panel lateral */
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #f8fafc;
+    /* Color de texto general claro */
 }
 
+/* --- ESTILOS DEL FORMULARIO --- */
 .search-form {
-    flex-grow: 1;
-    max-width: 400px;
+    padding: 16px;
+    background-color: #0f172a;
+    flex-shrink: 0;
+    /* Evita que el header se encoja */
 }
 
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .search-input {
     width: 100%;
-    padding: 10px 16px;
-    border: 1px solid #ccc;
+    padding: 10px 14px;
+    background-color: #1e293b;
+    /* Fondo del input oscuro */
+    color: #f8fafc;
+    /* Texto del input claro */
+    border: 1px solid #334155;
+    /* Borde oscuro */
     border-radius: 20px;
-    font-size: 14px;
     outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
     transition: border-color 0.2s;
 }
 
+.search-input::placeholder {
+    color: #94a3b8;
+    /* Placeholder sutil */
+}
+
 .search-input:focus {
-    border-color: #007bff;
+    border-color: #3b82f6;
+    /* Azul más brillante para dark mode */
 }
 
 .search-input.is-invalid {
-    border-color: #dc3545;
+    border-color: #ef4444;
+    /* Rojo adaptado */
 }
 
 .error-messages {
-    color: #dc3545;
+    color: #ef4444;
+    /* Rojo adaptado */
     font-size: 12px;
-    padding-left: 10px;
+    padding-left: 12px;
 }
 
-.btn-add-chat {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 16px;
-    background-color: #007bff;
-    color: white;
+/* --- ESTILOS DEL ENLACE "AGREGAR CONTACTO" --- */
+.chat-header-container>a {
+    display: block;
+    padding: 12px 16px;
+    color: #60a5fa;
+    /* Azul claro para contraste */
     text-decoration: none;
-    border-radius: 20px;
     font-weight: 500;
     font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+    /* Borde oscuro */
+    flex-shrink: 0;
+    /* Evita que se encoja */
     transition: background-color 0.2s;
-    white-space: nowrap;
 }
 
-.btn-add-chat:hover {
-    background-color: #0056b3;
+.chat-header-container>a:hover {
+    background-color: #1e293b;
+    /* Hover oscuro */
 }
