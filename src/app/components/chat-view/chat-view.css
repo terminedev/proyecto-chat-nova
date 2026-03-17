@@ -96,3 +96,18 @@
         opacity: 1;
     }
 }
+
+
+/* ========== RESPONSIVE CHAT VIEW ========== */
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 1rem;
+        /* Reducimos el padding lateral */
+        gap: 1rem;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+        /* Permitimos que los globos usen más ancho de la pantalla */
+    }
+}

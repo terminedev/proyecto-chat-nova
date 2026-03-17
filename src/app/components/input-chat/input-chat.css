@@ -86,3 +86,16 @@ input[type="text"]::placeholder {
     color: #64748b;
     cursor: not-allowed;
 }
+
+/* ========== RESPONSIVE INPUT ========== */
+@media (max-width: 768px) {
+    .chat-container {
+        padding: 0.8rem 1rem;
+        /* Menos espacio muerto a los lados */
+    }
+
+    .btn-primary {
+        padding: 0.8rem 1.2rem;
+        /* Achicamos ligeramente el botón de enviar */
+    }
+}
