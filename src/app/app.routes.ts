@@ -7,5 +7,6 @@ export const routes: Routes = [
     { path: '', component: Home },
     { path: 'agregar-contacto', component: AddNewChatFormComponent },
     { path: 'chat/:id', component: LayoutChat },
+
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

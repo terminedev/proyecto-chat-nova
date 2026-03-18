@@ -81,14 +81,20 @@ export class ChatService {
               {
                 author: 'Iko Ukonwada',
                 date: new Date().toISOString(),
-                messageText: '¡Hola! Te escribo desde el Palacio Real. ¿Cómo va todo?',
+                messageText: '¡Nova! ¡Por fin contacto contigo!',
                 messageImg: null,
               },
               {
-                author: 'Me',
+                author: 'Iko Ukonwada',
                 date: new Date().toISOString(),
-                messageText: '¡Todo excelente por aquí, Iko!',
+                messageText: 'Nos están obligando a utilizar esta extraña aplicación debido a las amenazas en la Academia Mágica. Así que debemos estar todos en contacto...',
                 messageImg: null,
+              },
+              {
+                author: 'Iko Ukonwada',
+                date: new Date().toISOString(),
+                messageText: 'Yo estoy con Rinna en el palacio de mi tía; cualquier cosa, háblame.',
+                messageImg: 'chats/iko-photo-palacio.png',
               }
             ]
           },
@@ -97,8 +103,27 @@ export class ChatService {
             messages: [
               {
                 author: 'Soraya Darkworth',
-                date: '2023-10-20T14:30:00.000Z',
-                messageText: 'Tengo información confidencial. No le digas a nadie.',
+                date: new Date(Date.now() - 86400000).toISOString(),
+                messageText: 'Hermano, será mejor que tengas cuidado con quién hablas. Los Magos Oscuros están cada vez más presentes.',
+                messageImg: null,
+              },
+              {
+                author: 'Soraya Darkworth',
+                date: new Date(Date.now() - 86400000).toISOString(),
+                messageText: 'Puedes añadir un nuevo contacto pulsando en el botón "+ Agregar nuevo contacto" en la lista de contactos generales.',
+                messageImg: null,
+              }
+              ,
+              {
+                author: 'Soraya Darkworth',
+                date: new Date(Date.now() - 86400000).toISOString(),
+                messageText: 'Deberás añadir el nombre del contacto (requerido) y su número (más de ocho caracteres).',
+                messageImg: null,
+              },
+              {
+                author: 'Soraya Darkworth',
+                date: new Date(Date.now() - 86400000).toISOString(),
+                messageText: 'Como sea, estaré rodeando la Academia por si hay algún intercambio. Hablamos después.',
                 messageImg: null,
               }
             ]
@@ -108,16 +133,22 @@ export class ChatService {
             messages: [
               {
                 author: 'Gema',
-                date: '2023-10-26T09:15:00.000Z',
-                messageText: 'Terminé mi rutina de hoy, mira cómo quedó el equipo nuevo:',
-                messageImg: 'https://picsum.photos/seed/gym/400/300',
+                date: new Date(Date.now() - (45 * 60 * 1000)).toISOString(),
+                messageText: '¡Cariño!, estoy terminando mi última serie de entrenamiento diario. Es una pena que no hayas podido venir.',
+                messageImg: '',
               },
               {
-                author: 'Me',
-                date: '2023-10-26T09:20:00.000Z',
-                messageText: '¡Se ve genial! Nos vemos más tarde.',
-                messageImg: null,
-              }
+                author: 'Gema',
+                date: new Date(Date.now() - (45 * 60 * 1000)).toISOString(),
+                messageText: 'Intento enviarte una foto duchándome, pero esta extraña aplicación no permite ese tipo de contenido.',
+                messageImg: 'chats/no-image.png',
+              },
+              {
+                author: 'Gema',
+                date: new Date(Date.now() - (45 * 60 * 1000)).toISOString(),
+                messageText: 'En fin, nos veremos en casa ♡',
+                messageImg: '',
+              },
             ]
           },
         ];

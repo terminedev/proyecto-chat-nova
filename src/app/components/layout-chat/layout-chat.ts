@@ -23,16 +23,20 @@ export class LayoutChat implements OnInit {
 
   private randomRepliesMap: { [key: string]: string[] } = {
     '12sdvDSAF3': [
-      '¡Qué interesante!',
-      '¿En serio? Cuéntame más.',
-      'Jaja, me parece genial.',
-      'Déjame revisarlo y te digo.',
-      '¡Exacto! Así mismo es.'
+      'Es todo extraño, la verdad. Pero sé que todo irá bien, ¡lo prometo!',
+      '¡Si también tienes miedo, puedes venir sin problemas! ¡Aquí todos te adoran!',
+      'Creo que no es necesario que lo mencione pero, ten cuidado, ¿sí? Sé que eres muy fuerte, pero aun así me preocupas.',
+      'Aún no he encontrado a Akura ni a Baru, pero en cuanto lo haga les avisaré para que vengan aquí.',
+      '¡Esos magos oscuros no se saldrán con la suya! Sé que la sargenta Soraya pronto encontrará una manera de solucionar todo esto.'
     ]
   };
 
   private defaultReplies: string[] = [
-    '¡Hola!', 'Vale, entiendo.', 'Claro que sí.', 'Me parece perfecto.', 'Hablamos luego.'
+    '¿Así que tú eres aquel extranjero? Vaya, eso explica tu popularidad. ¡Qué envidia!',
+    'No puedes desatarte de tu pasado, Nova. Sé que me recuerdas perfectamente; aún tenemos cosas pendientes. Te encontraré.',
+    '¡¿Es cierto que la sargenta es su hermana?!',
+    '¡No es justo, yo también quiero estar con ese grupo de mujeres!',
+    'Mundo perfecto, Nova. No lo olvides.',
   ];
 
   constructor(

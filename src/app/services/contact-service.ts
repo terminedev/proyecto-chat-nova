@@ -70,7 +70,7 @@ export class ContactService {
       const newContact: Contact = {
         id: crypto.randomUUID(),
         //Incluir avatar img por defecto
-        avatarUrl: '',
+        avatarUrl: 'chats/avatar-default.jpg',
         name: input.name,
         phone: input.phone,
         online: true,
@@ -103,7 +103,7 @@ export class ContactService {
         const defaultContacts: Contact[] = [
           {
             id: '12sdvDSAF3',
-            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            avatarUrl: 'chats/iko-casual.png',
             name: 'Iko Ukonwada',
             phone: '11345678898',
             online: true,
@@ -114,7 +114,7 @@ export class ContactService {
           },
           {
             id: '67dfKMK4mD',
-            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            avatarUrl: 'chats/soraya-casual.png',
             name: 'Soraya Darkworth',
             phone: '1199843450',
             online: false,
@@ -125,7 +125,7 @@ export class ContactService {
           },
           {
             id: '0887ascGDG',
-            avatarUrl: 'https://i.pravatar.cc/150?img=11',
+            avatarUrl: 'chats/gema-casual.png',
             name: 'Gema',
             phone: '566434553',
             online: false,
