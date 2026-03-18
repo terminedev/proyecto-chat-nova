@@ -18,11 +18,9 @@ export class ContactService {
     if (!rawData) return [];
 
     try {
-
       const contacts: Contact[] = JSON.parse(rawData);
 
       return contacts;
-
     } catch (error) {
 
       console.error("Error al obtener todos los contactos del localStorage:", error);
@@ -30,7 +28,6 @@ export class ContactService {
 
     }
   }
-
 
   // Buscar contacto:
   searchContact(query: string): Contact[] {

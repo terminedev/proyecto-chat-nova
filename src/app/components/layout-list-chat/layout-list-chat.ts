@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './layout-list-chat.html',
   styleUrl: './layout-list-chat.css'
 })
+
 export class LayoutListChat implements OnInit {
   searchForm: FormGroup;
   contacts: Contact[] = [];

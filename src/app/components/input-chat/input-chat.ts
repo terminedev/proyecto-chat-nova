@@ -19,6 +19,7 @@ export class InputChat {
       this.messageControl.reset('');
     }
   }
+
   clearMessage() {
     this.messageControl.reset('');
   }

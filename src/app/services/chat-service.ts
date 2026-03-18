@@ -26,8 +26,6 @@ export class ChatService {
       console.log(contactId)
       return chats.find(chat => chat.id === contactId) ?? null;
 
-
-
     } catch (error) {
 
       console.error("Error al obtener los chats de localStorage:", error);
@@ -40,13 +38,11 @@ export class ChatService {
   addNewMessage(newMessage: Message, chatId: string): boolean {
     try {
       const storedChats = localStorage.getItem(this.STORAGE_KEY);
-      // Si no hay nada, inicializamos con un array vacío
       let chats: Chat[] = storedChats ? JSON.parse(storedChats) : [];
 
       let chatIndex = chats.findIndex(chat => chat.id === chatId);
 
       if (chatIndex === -1) {
-        // SI NO EXISTE EL CHAT, LO CREAMOS
         const newChat: Chat = {
           id: chatId,
           messages: []
@@ -55,7 +51,6 @@ export class ChatService {
         chatIndex = chats.length - 1;
       }
 
-      // Ahora sí, insertamos el mensaje
       chats[chatIndex].messages.push(newMessage);
       localStorage.setItem(this.STORAGE_KEY, JSON.stringify(chats));
 

@@ -1,75 +1,108 @@
-### 1. Arquitectura Base y Angular 17
 
-[✓] **Standalone Components:** Construir toda la aplicación utilizando componentes independientes.
+# 🌌 Galisayo//CHAT - La aplicación para la Academia Mágica
 
-[✓] **Control Flow Blocks:** Usar las nuevas directivas `@if` y `@for` en tus archivos HTML para renderizar las listas y estados. 
-
-[✓] **Servicios:** Crear una carpeta `services` que contenga tu `ChatService` para manejar toda la lógica y el estado de los mensajes.
+Este proyecto es el **Trabajo Final Integrador** para el curso de **Desarrollo en Angular (UTN 2026)**. Se trata de una aplicación estilo chat aplicando los conceptos centrales de Angular 17.  
 
 
-
-### 2. Panel Lateral Izquierdo (Lista de Personajes/Grupos)
-
-[✓] **Lista de contactos:** Mostrar a tus personajes y grupos con su avatar, nombre y estado (ej. online/offline/última vez visto en el reino).
-
-[✓] **Creación dinámica:** Implementar un formulario reactivo para que el usuario pueda crear nuevos chats o grupos.
+--- 
 
 
+## 📝 Descripción General
 
-### 3. Panel Principal Derecho (La Conversación)
+**Galisayo//CHAT** permite del lado izquierdo:
 
-[] **Historial independiente:** Mostrar los mensajes correspondientes solo al chat o grupo que esté seleccionado.
+**Panel lateral izquierdo (lista de chats)**: 
+- Mostrar contactos con avatar, nombre y estado (online/offline/última vez visto). 
+- Permitir **crear nuevos chats** dinámicamente mediante un formulario reactivo.
+- Usar directivas modernas de Angular 17 (@for para iterar contactos, @if para 
+estados).
 
-[] **Formulario Reactivo:** Usar `FormControl` con validaciones para el input donde el usuario escribe.
-
-[] **Tu Opción 2 (Chips de sugerencias):** Arriba del input, colocar botones con posibles diálogos. Al hacer clic en uno, este debe rellenar el valor del `FormControl`, pero *el usuario debe presionar enviar manualmente* para pasar la validación.
-
-[] **Diferenciación visual:** Alinear los mensajes de tu usuario a la derecha y los de tus personajes (la app) a la izquierda.
-
-[] **Retardo y Autorespuesta:** Al enviar un mensaje, este debe aparecer en pantalla inmediatamente. Luego, aplicar un retardo (con `setTimeout` o RxJS) y hacer que el personaje o el grupo responda automáticamente en base a las palabras clave detectadas.
-
-
-### 4. Routing (Rutas de la App)
-
-[] **Configuración:** Utilizar `provideRouter` para manejar la navegación.
-
-[] **Ruta `/chats`:** Debe mostrar la vista principal con la lista de chats.
- 
-[] **Ruta `/chats/:id`:** Debe abrir la conversación específica con un personaje o grupo.
-
-[] **Ruta `/nuevo`:** Debe llevar al formulario de creación de chat.
+**Panel principal derecho (ventana de conversación)**: 
+- Mostrar historial de mensajes independiente por chat.
+- Al enviar un mensaje, este debe mostrarse en pantalla y la aplicación debe 
+responder automáticamente después de un retardo.
+- Formularios reactivos **(FormControl)** para escribir y validar el mensaje. 
 
 
+--- 
 
-### 5. Estilos y Maquetación (CSS)
 
-[] **CSS Nativo:** Estilar usando archivos `.css` puros, aplicando Flexbox o Grid para la estructura.
+## 🚀 Tecnologías Utilizadas
 
-[] **Burbujas:** Diseñar burbujas diferenciadas para los mensajes enviados y recibidos.
+Para el desarrollo de esta aplicación se utilizaron las siguientes herramientas y características:
 
-[] **Responsive Design:** * En pantallas grandes: Mostrar los dos paneles (lista y conversación) lado a lado.
+* **Angular 17+**: Framework principal basado en TypeScript para el desarrollo de la interfaz de usuario.
+* **Standalone Components**: Arquitectura moderna que elimina la necesidad de `NgModules`, simplificando la estructura del proyecto y mejorando el *tree-shaking*.
+* **Control Flow Blocks (@if, @for)**: Nueva sintaxis declarativa y optimizada para el manejo de lógica de plantillas (condicionales y bucles) sin necesidad de directivas estructurales.
+* **Reactive Forms**: Sistema para la gestión de formularios complejos con validaciones síncronas y asíncronas, permitiendo un manejo robusto de los datos de entrada.
+* **Routing (provideRouter)**: Configuración moderna de la navegación SPA, carga perezosa (*lazy loading*) y protección de rutas mediante *guards*.
 
-[] * En móviles: Mostrar solo un panel a la vez (o ves la lista de personajes, o ves la conversación activa).
+
+---
+
+
+## 📂 Estructura del Proyecto
 
 
 
-### 6. Entregables Obligatorios
+¡Claro! Viendo tu captura de pantalla, tienes una estructura muy limpia y organizada siguiendo las mejores prácticas de Angular (especialmente para una arquitectura basada en componentes independientes).
 
-[] **Documentación (README):** Incluir instrucciones claras de instalación y ejecución (`npm install`, `ng serve`), y explicar brevemente la estructura de tu proyecto y cómo probar las rutas.
- 
-[] **Control de versiones:** Realizar *commits* progresivos a lo largo del desarrollo para que los profesores vean tu evolución.
+Aquí tienes la sección para tu README o documentación:
 
 
-[] **Deploy:** Publicar la aplicación en Vercel o Netlify, configurando la redirección necesaria para una Single Page Application (SPA).
+---
+
+
+## 📂 Estructura del Proyecto
+
+El proyecto sigue una arquitectura modular y escalable, organizada por responsabilidades para facilitar el mantenimiento:
+
+* **`components/`**: Contiene los componentes reutilizables de la interfaz (presentacionales y de diseño).
+    * *Ejemplo:* `chat-view`, `input-chat` y layouts específicos para la visualización de mensajes.
+* **`models/`**: Definición de interfaces de TypeScript (`.interface.ts`) que aseguran el tipado fuerte de los datos en toda la aplicación (ej. `Chat`, `Contact`).
+* **`pages/`**: Componentes de alto nivel que actúan como vistas principales de la aplicación y están asociados a las rutas (ej. `home`, `add-new-chat-form`).
+* **`services/`**: Lógica de negocio y comunicación con fuentes de datos externas.
+    * `chat-service.ts`: Manejo de la mensajería y estados del chat.
+    * `contact-service.ts`: Gestión de la lista de contactos y perfiles.
+
+
+---
+
+
+## 🚀 Instrucciones de Instalación
+
+Sigue estos pasos para clonar y ejecutar el proyecto en tu entorno local:
+
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/terminedev/proyecto-galisayo--chat
+
+```
+
+### 2. Ingresar a la carpeta del proyecto
+
+```bash
+cd proyecto-galisayo--chat
+
+```
+
+### 3. Instalar dependenciasInstala las librerías necesarias listadas en el `package.json`:
+
+```bash
+npm install
+
+```
+
+### 4. Ejecutar el proyectoLevanta el servidor de desarrollo local:
+
+```bash
+npm start
+
+```
+
+### 5. Ver el resultadoAbre tu navegador en la dirección que indique la terminal (usualmente es la siguiente, pero puede variar):
+
+> http://localhost:4200
 
 
 
-### 7. Extras (Bonus track para lucirte)
-
-[] * Implementar un buscador de chats en la barra lateral.
-
-[] * Agregar animaciones (con CSS o Angular Animations) para que los mensajes aparezcan con un efecto *fade in*.
-
-[] * Crear un *Pipe* personalizado (quizás para formatear las fechas con un estilo propio de la época de tus personajes).
-
-[] * Usar *Signals* para manejar el estado global de tu `ChatService` en lugar de `BehaviorSubject`.

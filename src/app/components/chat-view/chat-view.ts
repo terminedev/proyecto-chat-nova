@@ -1,4 +1,3 @@
-// 1. Importamos ChangeDetectorRef
 import { Component, Input, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatService } from '../../services/chat-service';

@@ -11,6 +11,7 @@ import { ContactService } from '../../services/contact-service';
   templateUrl: './add-new-chat-form.html',
   styleUrls: ['./add-new-chat-form.css']
 })
+
 export class AddNewChatFormComponent {
   chatForm: FormGroup;
 
